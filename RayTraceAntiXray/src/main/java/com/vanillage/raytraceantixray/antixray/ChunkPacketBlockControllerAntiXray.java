@@ -31,6 +31,7 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.*;
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -239,7 +240,7 @@ public final class ChunkPacketBlockControllerAntiXray extends ChunkPacketBlockCo
             LevelChunk chunk = chunkPacketInfo.getChunk();
             int x = chunk.getPos().x;
             int z = chunk.getPos().z;
-            World world = ((CraftWorld) chunk.getLevel()).getHandle().getWorld();
+            World world = chunk.getLevel().getWorld();
 
             Bukkit.getRegionScheduler().execute(
                 plugin,
