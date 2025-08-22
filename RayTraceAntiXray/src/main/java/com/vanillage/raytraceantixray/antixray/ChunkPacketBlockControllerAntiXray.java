@@ -236,8 +236,18 @@ public final class ChunkPacketBlockControllerAntiXray extends ChunkPacketBlockCo
         }
 
         if (!Bukkit.isPrimaryThread()) {
-            // Plugins?
-            MinecraftServer.getServer().scheduleOnMain(() -> modifyBlocks(chunkPacket, chunkPacketInfo));
+            LevelChunk chunk = chunkPacketInfo.getChunk();
+            int x = chunk.getPos().x;
+            int z = chunk.getPos().z;
+            World world = ((CraftWorld) chunk.getLevel()).getHandle().getWorld();
+
+            Bukkit.getRegionScheduler().execute(
+                plugin,
+                world,
+                x,
+                z,
+                () -> modifyBlocks(chunkPacket, chunkPacketInfo)
+            );
             return;
         }
 
