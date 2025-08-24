@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("io.papermc.paperweight.userdev") version "2.0.0-beta.18"
+    id("io.canvasmc.weaver.userdev") version "2.3.1-SNAPSHOT"
 }
 
 group = "com.vanillage.raytraceantixray"
